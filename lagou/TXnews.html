@@ -105,6 +105,18 @@
 				var n  = Math.round(this.offsetLeft/w);// 0 1
 				list.style.left = n*w+"px";
 				console.log("当前"+n)
+				if(-(n)==3){
+					n=0;
+					list.style.left = 0;
+				}
+				ico.children[2].classList.remove("on");
+				
+				ico.children[-(n)].setAttribute("class","on");
+				
+				if(-(n)>0){
+					ico.children[-(n)-1].classList.remove("on");
+				}
+				
 				if(n==1){
 //					alert("")
 					n=-3;
