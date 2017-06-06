@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script>
+			document.getElementsByTagName("html")[0].style.fontSize = innerWidth/16+"px"
+		</script>
+		<title></title>
+		<link rel="stylesheet" href="css/font-awesome.min.css" />
+		<link rel="stylesheet" href="css/TX.css"/>
+	</head>
+	<body>
+		<div class="content">
+			<header>
+				<img src="img/logo.png"/>
+				<span>登录</span>
+			</header>
+			<section>
+				<ul class="news_first">
+					<li><a href="#">新闻</a></li>
+					<li><a href="#">财经</a></li>
+					<li><a href="#">娱乐</a></li>
+					<li><a href="#">体育</a></li>
+					<li><a href="#">更多<i class="fa fa-sort-desc"></i></a></li>
+				</ul>
+				<ul class="news_first">
+					<li><a href="#">军贵州小镇藏“欧洲古堡”？系百年前小学
+事</a></li>
+					<li><a href="#">NBA</a></li>
+					<li><a href="#">应用</a></li>
+					<li><a href="#">科技</a></li>
+					<li><a href="#">星座</i></a></li>
+				</ul>
+				<div id="lbpic">
+					<ul id="lblist">
+						<li><a href="#"><img src="img/0.jpg" /></a></li>
+						<li><a href="#"><img src="img/23.jpg" /></a></li>
+						<li><a href="#"><img src="img/1.jpg" /></a></li>
+					</ul>
+					
+					<p id="icon"><span></span><span></span><span></span></p>
+					
+				</div>
+				<div id="news_list">
+					<p><span class="title">H5精选</span>端午微信刷屏小游戏</p>
+					<p><span class="title">财经</span>平均工资上涨 到手的钱可能会更少？</p>
+					<p><span class="title">娱乐</span>杨幂刘恺威，在这一年他们为家庭做了多少努力？</p>
+					<p><span class="title">体育</span>毫无巨星架子！朱婷骑共享单车出行</p>
+					<p><span class="title">军事</span>乌军高官视察军队 扬言要3天攻取莫斯科</p>
+				</div>
+				<span class="qq_login">用QQ号登录,看更多个性新闻<i class="fa fa-angle-right"></i><a href="#"><img class="adgame" src="img/wzny.png"/></a></span>
+				<!--第二屏开始-->
+				<ul class="news_second">
+					<li>新闻</li>
+					<li>社会</li>
+					<li>军事</li>
+				</ul>
+				<div id="news_list2">
+					<span class="xjp"><img src="img/df.jpg"/><p>习近平给孩子们描绘的"童心圆"</p></span>
+				</div>
+				
+				<p class="wjnews"><span>专题</span>美退出 《巴黎协议》 外交部：应珍惜维护来</p>
+				<p class="wjnews"><span>独家</span>台官方证实：4名台湾同胞在菲律宾赌场袭击中身亡</p>
+				<p class="wjnews"><span>独家</span>夫妻麦客：每天40度高温作业20小时</p>
+				<p class="wjnews">上海市政府原副秘书长戴海波受贿990万 一审获刑9年</p>
+				<p class="wjnews"><span>独家</span>神回复！林黛玉和薛宝钗，你选哪个当媳妇？答案亮了</p>
+				<p class="wjnews"><span>独家</span>起底女德讲师丁璇：“挂靠”多个组织 身份多为虚名</p>
+				<p class="wjnews"><span>独家</span>今日热播视频专辑</p>
+				<p class="wjnews"><span>独家</span>新华社：别让大爷大妈和小伙儿再抢球场和头条了</p>
+				<span class="in_login" style="color: #C0C0C0;">进入新闻频道<i class="fa fa-angle-right"></i><a href="#"></a></span>
+			</section>
+		</div>
+		<script>
+			var lbpic = document.getElementById("lbpic");
+			var list = document.getElementById("lblist");
+			var ico  = document.getElementById("icon");
+			var w = document.getElementsByTagName("html")[0].clientWidth;//当前设备宽
+			var disx;//触摸下时的位置
+			var mx ;//滑动的距离
+			var leftx;//保存当前元素距离左边的距离
+			var l = list.children.length;//轮播个数
+			var icon = document.querySelectorAll("#icon span")
+			lbpic.addEventListener("touchstart",function(e){
+				e.preventDefault()
+			})
+			
+			list.addEventListener("touchstart",function(e){
+				disx = e.changedTouches[0].pageX;//触摸下时的位置
+				leftx = this.offsetLeft;
+				var n  = Math.round(this.offsetLeft/w);// 0 1
+				if(n==-(l-1)){
+					
+				}
+				clearInterval(timer);
+				
+			})
+			
+			list.addEventListener("touchmove",function(e){
+				mx = e.changedTouches[0].pageX;
+				list.style.left = mx - disx +leftx+"px";
+			})
+			
+			list.addEventListener("touchend",function(e){
+				var n  = Math.round(this.offsetLeft/w);// 0 1
+				list.style.left = n*w+"px";
+				console.log("当前"+n)
+				if(n==1){
+//					alert("")
+					n=-3;
+					list.style.left = -w*3+"px";
+				}
+				if(n==-l){
+					n=1;
+					list.style.left = 0;
+				}
+				
+			})
+			var ide = 0;
+			ico.children[0].setAttribute("class","on");
+			
+			var timer = setInterval(function(){
+				var n  = Math.round(-(list.offsetLeft/w));// 0 1
+				ide++;
+				ico.children[ide].setAttribute("class","on");
+				ico.children[ide-1].classList.remove("on");
+				console.log(ide)
+				list.style.left = -ide * w+"px";
+				
+				if(ide==l-1){
+					ide=0;
+					
+					list.style.left =0;
+				}
+
+				
+			},2000)
+		</script>
+	</body>
+</html>

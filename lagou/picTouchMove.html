@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script type="text/javascript" src="zepto.min.js" ></script>
+		<script>
+			document.getElementsByTagName("html")[0].style.fontSize = innerWidth / 16 +"px";
+		</script>
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body,html{
+				width: 100%;
+				height: 100%;
+			}
+			#show{
+				width:100%;
+				height: 200px;
+				position: relative;
+				overflow: hidden;
+				
+			}
+			#list{
+				transition: transform .5s;
+				width: 400%;
+				list-style: none;
+				height: 100%;
+				position: absolute;
+			}
+			#list li{
+				width: 16rem;
+				height: 100%;
+				float: left;
+			}
+			li:nth-child(4n+1){
+				background: red;
+			}
+			li:nth-child(4n+2){
+				background: green;
+			}
+			li:nth-child(4n+3){
+				background: orange;
+			}
+			li:nth-child(4n){
+				background: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="show">
+			<ul id="list">
+				<li>111</li>
+				<li>222</li>
+				<li>333</li>
+				<li>444</li>
+			</ul>
+		</div>
+		<script>
+			$("#show")[0].addEventListener("touchstart",function(ev){
+				ev.preventDefault();
+			})
+			
+			var ide = 0;
+			$(function(){
+				var size = $("#list").find("li").size();//总图片个数
+				var w = $(window).width();//屏幕宽
+				
+				$("#show").on("swipeLeft",function(){
+					ide++;
+					if(ide>=size){
+						ide=size-1;
+					}
+					$("#list").css("-webkit-transform","translate3d("+(-ide*w)+"px,0,0)")
+				}).on("swipeRight",function(){
+					ide--;
+					if(ide<=0){
+						ide=0;
+					}
+					$("#list").css("-webkit-transform","translate3d("+(-ide*w)+"px,0,0)")
+				})
+			})
+		</script>
+	</body>
+</html>

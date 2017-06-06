@@ -1,0 +1,25 @@
+* { padding: 0; margin: 0; }
+
+body, html, .containe { width: 100%; height: 100%; overflow: hidden; }
+
+.containe { display: flex; flex-direction: column; }
+
+header { width: 100%; height: 2rem; background: #00B38A; display: flex; font-size: 1rem; }
+header span { padding: .5rem; color: #F5F5F5; height: 100%; text-align: center; }
+header span:nth-child(2) { font-size: .7rem; flex: 1; }
+header span:nth-child(2) span { height: .6rem; width: 3rem; }
+header span:nth-child(2) span:nth-child(1) { border-radius: 10px 0 0 10px; background: lightgreen; }
+header span:nth-child(2) span:nth-child(2) { border-radius: 0 10px 10px 0; background: lightseagreen; }
+
+section { overflow-y: auto; flex: 1; box-sizing: border-box; }
+section .bnv { display: flex; width: 100%; border-bottom: 1px solid silver; }
+section .bnv span { flex: 1; height: 2.5em; line-height: 2.5em; text-align: center; }
+section .bnv span:first-child { border-bottom: 2px solid #00B38A; color: #00B38A; }
+section ul { display: flex; box-sizing: border-box; }
+section ul li { flex: 1; font-size: .7rem; margin-left: .25rem; margin-top: .25rem; font-weight: 600; display: flex; }
+section ul li span { flex: 1; -webkit-column-count: 2; }
+section ul li span img { width: 8rem; height: 4rem; }
+
+footer { width: 100%; height: 40px; background: #CCCCCC; align-self: flex-end; }
+
+/*# sourceMappingURL=football.css.map */

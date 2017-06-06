@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<style>
+			#close{
+				width: 300px;
+				height: 300px;
+				background: brown;
+				position: absolute;
+				top: 0;
+				left: 0;
+				opacity: .5;
+			}
+		</style>
+	</head>
+	<body>
+		
+			<a href="http://www.baidu.com" id="link">baidu</a>
+			
+		<div id="close">
+			12313area
+		</div>
+		<script>
+			var link = document.querySelector("#link");
+			var ar = document.querySelector("#close");
+			
+			ar.addEventListener("click",function(){
+				console.log("link to baidu!")
+			})
+			ar.addEventListener("touchstart",function(ev){
+				console.log("touch !")
+				this.innerHTML = ev.touches.length;
+			})
+			
+			//点击到link区域上会产生点透bug
+			ar.addEventListener("touchend",function(){
+				this.style.display = "none";
+			})
+			
+			//阻止默认行为，解决点透bug
+			ar.addEventListener("touchstart",function(ev){
+				ev.preventDefault();
+			})
+		</script>
+	</body>
+</html>

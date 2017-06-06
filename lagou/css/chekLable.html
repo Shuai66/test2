@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				-webkit-user-select: none;
+			}
+			.lab{
+				width: 40px;
+				height: 20px;
+				border-radius: 15px;
+				border: 15px solid black inherit;
+				display: inline-block;
+				background: url(../img/2.jpg) no-repeat center center;
+				background-size: 100% 100%;
+			}
+			.fx:checked+label{
+				background: url(../img/22.jpg) no-repeat center center;
+				background-size: 100% 100%;
+			}
+			.fx{
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		百度：<input type="checkbox" class="fx" id="one" /><label for="one" class="lab"></label><br />
+		谷歌： <input type="checkbox" class="fx" id="two" /><label for="two" class="lab"></label>
+	</body>
+</html>
