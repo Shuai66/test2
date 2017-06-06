@@ -119,22 +119,31 @@
 			var ide = 0;
 			ico.children[0].setAttribute("class","on");
 			
+			
+			
 			var timer = setInterval(function(){
 				var n  = Math.round(-(list.offsetLeft/w));// 0 1
 				ide++;
-				ico.children[ide].setAttribute("class","on");
-				ico.children[ide-1].classList.remove("on");
+				
 				console.log(ide)
 				list.style.left = -ide * w+"px";
 				
-				if(ide==l-1){
+				if(ide==l){
 					ide=0;
 					
 					list.style.left =0;
 				}
+				ico.children[2].classList.remove("on");
+				
+				ico.children[ide].setAttribute("class","on");
+				
+				if(ide>0){
+					ico.children[ide-1].classList.remove("on");
+				}
 
 				
 			},2000)
+			
 		</script>
 	</body>
 </html>
