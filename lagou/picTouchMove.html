@@ -19,7 +19,7 @@
 			}
 			#show{
 				width:100%;
-				height: 200px;
+				height:100%;
 				position: relative;
 				overflow: hidden;
 				
@@ -31,56 +31,94 @@
 				height: 100%;
 				position: absolute;
 			}
+			#icon{
+				position: absolute;
+				left: 4rem;
+				bottom: 10%;
+				z-index: 999;
+				width: auto;
+				height: auto;
+			}
+			
+			#icon .on{
+				background-color: rgba(255,255,0,.5);
+			}
+			
+			#icon span{
+				display: inline-block;
+				margin-left: 20px;
+				background: rgba(255,255,255,.5);
+				height: .75rem;
+				width: .75rem;
+				border-radius: 50%;
+				font-size: .25rem;
+				text-align: center;
+				line-height: 1rem;
+			}
+			
 			#list li{
 				width: 16rem;
 				height: 100%;
 				float: left;
 			}
-			li:nth-child(4n+1){
-				background: red;
+			#list li img{width: 100%; height: 100%;}
+			#list li:nth-child(4){
+				position: relative;
+				
 			}
-			li:nth-child(4n+2){
-				background: green;
-			}
-			li:nth-child(4n+3){
-				background: orange;
-			}
-			li:nth-child(4n){
-				background: blue;
+			#list li:nth-child(4) a{
+				text-align: center;
+				display: block;
+				position: absolute;
+				bottom: 30%;
+				left: 35%;
+				text-decoration: none;
+				width: 30%;
+				background: rgba(255,255,255,.5);
 			}
 		</style>
 	</head>
 	<body>
 		<div id="show">
+			<p id="icon"><span></span><span></span><span></span><span></span></p>
 			<ul id="list">
-				<li>111</li>
-				<li>222</li>
-				<li>333</li>
-				<li>444<a href=" https://shuai66.github.io/test2/lagou/
-TXnews.html">开始旅游</a></li>
+				<li><img src="img/4ss.png"></li>
+				<li><img src="img/3f.png"></li>
+				<li><img src="img/2a.png"></li>
+				<li>
+					<img src="img/1a.png">
+					<a href="TXnews.html">开始旅游</a>
+				</li>
 			</ul>
 		</div>
 		<script>
-			$("#show")[0].addEventListener("touchstart",function(ev){
-				ev.preventDefault();
-			})
+
 			
 			var ide = 0;
 			$(function(){
 				var size = $("#list").find("li").size();//总图片个数
 				var w = $(window).width();//屏幕宽
+				var icon = document.getElementById("icon")
+				icon.children[0].setAttribute("class","on");
 				
 				$("#show").on("swipeLeft",function(){
 					ide++;
 					if(ide>=size){
 						ide=size-1;
 					}
+					
+					icon.children[ide].setAttribute("class","on");
+					icon.children[ide-1].classList.remove("on")
 					$("#list").css("-webkit-transform","translate3d("+(-ide*w)+"px,0,0)")
+				
 				}).on("swipeRight",function(){
 					ide--;
 					if(ide<=0){
 						ide=0;
 					}
+					
+					icon.children[ide].setAttribute("class","on");
+					icon.children[ide+1].classList.remove("on")
 					$("#list").css("-webkit-transform","translate3d("+(-ide*w)+"px,0,0)")
 				})
 			})
