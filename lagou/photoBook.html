@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<style>
+			*{padding: 0;margin: 0;}
+			html,body{height: 100%;width: 100%;overflow: hidden;}
+			#slist{list-style: none;width: 100%;height:100%;}
+			
+			#slist li{float: left;overflow: hidden;}
+			#largelist{width: 100%;height: 100%;position:absolute;left: 0;top: 0;background:rgba(255,255,255,1);display: none;}
+			#limage{position: absolute;transition:transform .5s ease-in;transform: scale(0,0);}
+		</style>
+		<script src="zepto.min.js"></script>
+		
+	</head>
+	<body>
+		<ul id="slist">
+			
+		</ul>
+		
+		<div id="largelist">
+			<img src="" alt="" id="limage"/>
+		</div>
+		
+		<script>
+			$(function(){
+				var len = 16;
+				var allImg = '';
+				$wdwidth = $(window).width();
+				var tw = ($wdwidth/4); //每张图片的宽度 
+				
+				for(var i=0;i<=len-1;i++){
+					allImg+='<li style="width:'+tw+'px;height:'+tw+'px"><canvas id=can'+i+'></canvas></li>';
+					var t  = new Image();
+					t.index = i;
+					t.src = "images/"+i+".jpg";
+					t.onload = function(){
+						var op = $("#can"+this.index)[0].getContext("2d");
+						op.drawImage(this,0,0,t.height,t.width)
+					}
+
+					
+				}
+				alert(allImg)
+				$("#slist").html(allImg);
+
+				$("#slist").on("tap","li",function(){
+					console.log("sasa")
+					$("#largelist").show();
+					var index = $(this).index();
+					showLargePic(index);
+				})
+				
+				function showLargePic(pic){
+					console.log("in")
+					var t  = new Image();//创建一个点开后这张图片的实例对象
+					t.src = "images/"+pic+".large.jpg";
+					t.onload = function (){
+						$("#limage").attr("src",t.src);
+						var th = this.height;//本身的宽度
+						var tw = this.width;
+						
+						var wh = $(window).height();//窗口的宽高
+						var ww = $(window).width();
+						
+						var bh = (wh / th);//比例
+						var bw = ww / tw;
+						
+						var curh = th*bh;//乘以比例后的适应宽高
+						var curw = tw*bw;
+						
+						if(tw>th){//横版图片
+							$("#limage").css({"width":"100%","height":"auto","marginTop":"50%","marginLeft":"0","transform":"scale(1,1)"})
+						}else{
+							$("#limage").css({"width":"100%","height":"100%","marginTop":"0","marginLeft":(ww-curw)/2+"px","transform":"scale(1,1)"})
+						}
+						$("#largelist").on("tap",function(){
+							$("#limage").css({"transform":"scale(0,0)"})
+							$("#largelist").hide(500)
+						})
+					}
+					
+				}
+				
+			})
+		</script>
+	</body>
+</html>
