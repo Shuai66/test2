@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="jquery-1.11.1.js"></script>
+		<script type="text/javascript" src="zepto.min.js" ></script>
+		<link rel="stylesheet" href="fonts/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/trainInfo.css"/>
+		<script src="js/trainInfo.js">
+			
+		</script>
+	</head>
+	<body>
+		<div class="container">
+			<header>
+				<h2>火车信息查询</h2>
+				上车站:<input type="text" id="start" value="上海" /><br />
+				到达站:<input type="text" id="arrive"  value="北京"/><br />
+				<input type="button" id="query"  value="查询"/>
+			</header>
+			
+			<section id="list">
+				<img src="img/ajax-loader.gif" id="load"/>
+				<!--上车站点-->
+				<ul id="one"></ul>
+				<!--途经站点-->
+				<ul id="two"></ul>
+			</section>
+		</div>
+	</body>
+</html>
