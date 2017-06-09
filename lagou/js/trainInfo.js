@@ -1,5 +1,5 @@
-var urldata =`http://proxy.e12e.com/?http://ws.webxml.com.cn/WebServices/TrainTimeWebService.asmx/getStationAndTimeByStationName?UserID=3abb4264ba5a44eeb07456e2cbbbc4e3`
-			var train = `http://proxy.e12e.com/?http://ws.webxml.com.cn/WebServices/TrainTimeWebService.asmx/getDetailInfoByTrainCode?UserID=3abb4264ba5a44eeb07456e2cbbbc4e3`
+var urldata =`https://proxy.e12e.com/?http://ws.webxml.com.cn/WebServices/TrainTimeWebService.asmx/getStationAndTimeByStationName?UserID=3abb4264ba5a44eeb07456e2cbbbc4e3`
+			var train = `https://proxy.e12e.com/?http://ws.webxml.com.cn/WebServices/TrainTimeWebService.asmx/getDetailInfoByTrainCode?UserID=3abb4264ba5a44eeb07456e2cbbbc4e3`
 			$(function(){
 				var num;
 				var tname;//保存点击时的车次				
